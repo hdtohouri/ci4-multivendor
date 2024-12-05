@@ -5,10 +5,11 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->match(['POST', 'GET'], '/', 'Auth::index', ['filter' => 'Auth_Filter']);
-$routes->match(['POST', 'GET'], '/auth', 'Auth::index', ['filter' => 'Auth_Filter']);
+//$routes->get( '/', 'Auth::login', ['filter' => 'Auth_Filter']);
+$routes->match(['POST', 'GET'], 'auth/login', 'Auth::login', ['filter' => 'Auth_Filter']);
 $routes->match(['POST', 'GET'], '/auth/forgot_password', 'Auth::forgot_password');
 $routes->match(['POST', 'GET'], '/auth/forgot_password', 'Auth::reset_password');
+$routes->post('auth/fileupload', 'Auth::fileupload', /*['filter' => 'cors:api']*/);
 
     // Route Erreur 404
 $routes->set404Override(function() {
