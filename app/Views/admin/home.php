@@ -1,572 +1,166 @@
 <?= $this->extend('admin/template/admin_template') ?>
+<link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
 <?= $this->section('content') ?>
-
-<div class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
-    <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
-
-        <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
-            <div class="grow">
-                <h5 class="text-16">Analytics</h5>
-            </div>
-            <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
-                <li class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
-                    <a href="#!" class="text-slate-400 dark:text-zink-200">Dashboards</a>
-                </li>
-                <li class="text-slate-700 dark:text-zink-100">
-                    Analytics
-                </li>
-            </ul>
-        </div>
-        <div class="grid grid-cols-12 gap-x-5">
-            <div class="order-1 md:col-span-6 lg:col-span-3 col-span-12 2xl:order-1 bg-green-100 dark:bg-green-500/20 card 2xl:col-span-2 group-data-[skin=bordered]:border-green-500/20 relative overflow-hidden">
-                <div class="card-body">
-                    <i data-lucide="kanban" class="absolute top-0 stroke-1 size-32 text-green-200/50 dark:text-green-500/20 ltr:-right-10 rtl:-left-10"></i>
-                    <div class="flex items-center justify-center bg-green-500 rounded-md size-12 text-15 text-green-50">
-                        <i data-lucide="users"></i>
-                    </div>
-                    <h5 class="mt-5 mb-2"><span class="counter-value" data-target="15876">0</span></h5>
-                    <p class="text-slate-500 dark:text-slate-200">Total Users</p>
-                </div>
-            </div><!--end col-->
-            <div class="order-2 md:col-span-6 lg:col-span-3 col-span-12 2xl:order-1 bg-orange-100 dark:bg-orange-500/20 card 2xl:col-span-2 group-data-[skin=bordered]:border-orange-500/20 relative overflow-hidden">
-                <div class="card-body">
-                    <i data-lucide="list-filter" class="absolute top-0 stroke-1 size-32 text-orange-200/50 dark:text-orange-500/20 ltr:-right-10 rtl:-left-10"></i>
-                    <div class="flex items-center justify-center bg-orange-500 rounded-md size-12 text-15 text-orange-50">
-                        <i data-lucide="cog"></i>
-                    </div>
-                    <h5 class="mt-5 mb-2"><span class="counter-value" data-target="103.15">0</span>k</h5>
-                    <p class="text-slate-500 dark:text-slate-200">Sessions</p>
-                </div>
-            </div><!--end col-->
-            <div class="order-3 md:col-span-6 lg:col-span-3 col-span-12 2xl:order-1 bg-sky-100 dark:bg-sky-500/20 card 2xl:col-span-2 group-data-[skin=bordered]:border-sky-500/20 relative overflow-hidden">
-                <div class="card-body">
-                    <i data-lucide="list-filter" class="absolute top-0 stroke-1 size-32 text-sky-200/50 dark:text-sky-500/20 ltr:-right-10 rtl:-left-10"></i>
-                    <div class="flex items-center justify-center rounded-md size-12 bg-sky-500 text-15 text-sky-50">
-                        <i data-lucide="coins"></i>
-                    </div>
-                    <h5 class="mt-5 mb-2"><span class="counter-value" data-target="1">0</span>M <span class="counter-value" data-target="29">0</span>sec</h5>
-                    <p class="text-slate-500 dark:text-slate-200">Avg. Visit Duration</p>
-                </div>
-            </div><!--end col-->
-            <div class="order-4 md:col-span-6 lg:col-span-3 col-span-12 2xl:order-1 bg-purple-100 dark:bg-purple-500/20 card 2xl:col-span-2 group-data-[skin=bordered]:border-purple-500/20 relative overflow-hidden">
-                <div class="card-body">
-                    <i data-lucide="kanban" class="absolute top-0 stroke-1 size-32 text-purple-200/50 dark:text-purple-500/20 ltr:-right-10 rtl:-left-10"></i>
-                    <div class="flex items-center justify-center bg-purple-500 rounded-md size-12 text-15 text-purple-50">
-                        <i data-lucide="users"></i>
-                    </div>
-                    <h5 class="mt-5 mb-2"><span class="counter-value" data-target="49.77">0</span>%</h5>
-                    <p class="text-slate-500 dark:text-slate-200">Bounce Rate</p>
-                </div>
-            </div><!--end col-->
-            <div class="order-6 col-span-12 2xl:order-1 card 2xl:col-span-5">
-                <div class="card-body">
-                    <div class="flex items-center gap-2">
-                        <h6 class="mb-3 text-15 grow">Location-Based Response Times</h6>
-                        <div class="shrink-0">
-                            <button type="button" class="px-2 py-1.5 text-xs text-custom-500 btn bg-custom-100 hover:text-white hover:bg-custom-600 focus:text-white focus:bg-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:ring active:ring-custom-100 dark:bg-custom-500/20 dark:text-custom-500 dark:hover:bg-custom-500 dark:hover:text-white dark:focus:bg-custom-500 dark:focus:text-white dark:active:bg-custom-500 dark:active:text-white dark:ring-custom-400/20">
-                                View More <i data-lucide="move-right" class="inline-block size-4 ltr:ml-1 rlt:mr-1 rtl:-rotate-180"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="responseTimes" class="apex-charts" data-chart-colors='["bg-red-500"]' dir="ltr"></div>
-                </div>
-            </div><!--end col-->
-            <div class="order-7 col-span-12 2xl:order-1 card 2xl:col-span-7">
-                <div class="card-body">
-                    <div class="flex items-center gap-2">
-                        <h6 class="mb-3 text-15 grow">Pages Interaction</h6>
-                        <div class="relative dropdown shrink-0">
-                            <button type="button" class="px-2 py-1.5 text-xs bg-text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20 dropdown-toggle" id="emailDataDropdown" data-bs-toggle="dropdown">
-                                This Yearly <i data-lucide="chevron-down" class="inline-block size-4 ltr:ml-1 rlt:mr-1"></i>
-                            </button>
-
-                            <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="emailDataDropdown">
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">1 Weekly</a>
-                                </li>
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">1 Monthly</a>
-                                </li>
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">3 Monthly</a>
-                                </li>
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">6 Monthly</a>
-                                </li>
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">This Yearly</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div id="pagesInteraction" class="apex-charts" data-chart-colors='["bg-custom-500", "bg-purple-500"]' dir="ltr"></div>
-                </div>
-            </div><!--end col-->
-            <div class="order-8 col-span-12 lg:col-span-6 2xl:order-1 card 2xl:col-span-4">
-                <div class="card-body">
-                    <div class="flex items-center gap-2 mb-3">
-                        <h6 class="text-15 grow">User Device <a href="#!" data-tooltip="default" data-tooltip-content="You can see your number of desktop, mobile, and tablet users." class="inline-block align-middle ltr:ml-1 rtl:mr-1 text-slate-500 dark:text-zink-200"><i data-lucide="info" class="size-4"></i></a></h6>
-                        <div class="relative dropdown shrink-0">
-                            <button type="button" class="flex items-center justify-center size-[30px] p-0 bg-white text-slate-500 btn hover:text-slate-500 hover:bg-slate-100 focus:text-slate-500 focus:bg-slate-100 active:text-slate-500 active:bg-slate-100 dark:bg-zink-700 dark:hover:bg-slate-500/10 dark:focus:bg-slate-500/10 dark:active:bg-slate-500/10 dropdown-toggle" id="userDeviceDropdown" data-bs-toggle="dropdown">
-                                <i data-lucide="more-vertical" class="inline-block size-4"></i>
-                            </button>
-
-                            <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="userDeviceDropdown">
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">1 Weekly</a>
-                                </li>
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">1 Monthly</a>
-                                </li>
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">3 Monthly</a>
-                                </li>
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">6 Monthly</a>
-                                </li>
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">This Yearly</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div id="userDeviceCharts" class="apex-charts" data-chart-colors='["bg-custom-500", "bg-green-500", "bg-orange-500"]' dir="ltr"></div>
-                </div>
-            </div><!--end col-->
-            <div class="order-9 col-span-12 lg:col-span-6 2xl:order-1 card 2xl:col-span-4">
-                <div class="card-body">
-                    <div class="flex items-center gap-2 mb-3">
-                        <h6 class="text-15 grow">Satisfaction Level <a href="#!" data-tooltip="default" data-tooltip-content="The 1-to-5 satisfaction scale is used for measuring customer satisfaction" class="inline-block align-middle ltr:ml-1 rtl:mr-1 text-slate-500 dark:text-zink-200"><i data-lucide="info" class="size-4"></i></a></h6>
-                        <div class="relative dropdown shrink-0">
-                            <button type="button" class="flex items-center justify-center size-[30px] p-0 bg-white text-slate-500 btn hover:text-slate-500 hover:bg-slate-100 focus:text-slate-500 focus:bg-slate-100 active:text-slate-500 active:bg-slate-100 dark:bg-zink-700 dark:hover:bg-slate-500/10 dark:focus:bg-slate-500/10 dark:active:bg-slate-500/10 dropdown-toggle" id="satisfactionRateDropdown" data-bs-toggle="dropdown">
-                                <i data-lucide="more-vertical" class="inline-block size-4"></i>
-                            </button>
-
-                            <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="satisfactionRateDropdown">
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">1 Weekly</a>
-                                </li>
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">1 Monthly</a>
-                                </li>
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">3 Monthly</a>
-                                </li>
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">6 Monthly</a>
-                                </li>
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">This Yearly</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div id="satisfactionRate" class="apex-charts" data-chart-colors='["bg-custom-500"]' dir="ltr"></div>
-                    <p class="text-center text-15 text-slate-500 dark:text-zink-200">Based on Likes 💖</p>
-                </div>
-            </div><!--end col-->
-            <div class="order-10 col-span-12 2xl:order-1 card 2xl:col-span-4">
-                <div class="card-body">
-                    <div class="flex items-center gap-2 mb-3">
-                        <h6 class="text-15 grow">Daily Visit Insights <a href="#!" data-tooltip="default" data-tooltip-content="Analyst or business user discovering a pattern in data or a relationship between variables" class="inline-block align-middle ltr:ml-1 rtl:mr-1 text-slate-500 dark:text-zink-200"><i data-lucide="info" class="size-4"></i></a></h6>
-                        <div class="relative dropdown shrink-0">
-                            <button type="button" class="flex items-center justify-center size-[30px] p-0 bg-white text-slate-500 btn hover:text-slate-500 hover:bg-slate-100 focus:text-slate-500 focus:bg-slate-100 active:text-slate-500 active:bg-slate-100 dark:bg-zink-700 dark:hover:bg-slate-500/10 dark:focus:bg-slate-500/10 dark:active:bg-slate-500/10 dropdown-toggle" id="dailyVisitInsightsDropdown" data-bs-toggle="dropdown">
-                                <i data-lucide="more-vertical" class="inline-block size-4"></i>
-                            </button>
-
-                            <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="dailyVisitInsightsDropdown">
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">1 Weekly</a>
-                                </li>
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">1 Monthly</a>
-                                </li>
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">3 Monthly</a>
-                                </li>
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">6 Monthly</a>
-                                </li>
-                                <li>
-                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">This Yearly</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div id="dailyVisitInsightsChart" class="apex-charts" data-chart-colors='["bg-green-500", "bg-purple-500"]' dir="ltr"></div>
-                </div>
-            </div><!--end col-->
-            <div class="order-11 col-span-12 2xl:order-1 card 2xl:col-span-12">
-                <div class="card-body">
-                    <div class="grid items-center grid-cols-1 gap-3 mb-5 xl:grid-cols-12">
-                        <div class="xl:col-span-3">
-                            <h6 class="text-15">Products Statistics</h6>
-                        </div><!--end col-->
-                        <div class="xl:col-span-3 xl:col-start-10">
-                            <div class="flex gap-3">
-                                <div class="relative grow">
-                                    <input type="text" class="ltr:pl-8 rtl:pr-8 search form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Search for ..." autocomplete="off">
-                                    <i data-lucide="search" class="inline-block size-4 absolute ltr:left-2.5 rtl:right-2.5 top-2.5 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-600"></i>
-                                </div>
-                                <button type="button" class="bg-white border-dashed text-custom-500 btn border-custom-500 hover:text-custom-500 hover:bg-custom-50 hover:border-custom-600 focus:text-custom-600 focus:bg-custom-50 focus:border-custom-600 active:text-custom-600 active:bg-custom-50 active:border-custom-600 dark:bg-zink-700 dark:ring-custom-400/20 dark:hover:bg-custom-800/20 dark:focus:bg-custom-800/20 dark:active:bg-custom-800/20"><i class="align-baseline ltr:pr-1 rtl:pl-1 ri-download-2-line"></i> Export</button>
-                            </div>
-                        </div><!--end col-->
-                    </div><!--end grid-->
-
-                    <div class="-mx-5 overflow-x-auto">
-                        <table class="w-full whitespace-nowrap">
-                            <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
-                                <tr>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500 w-10">
-                                        <div class="flex items-center h-full">
-                                            <input id="productsCheckAll" class="size-4 cursor-pointer bg-white border border-slate-200 checked:bg-none dark:bg-zink-700 dark:border-zink-500 rounded-sm appearance-none arrow-none relative after:absolute after:content-['\eb7b'] after:top-0 after:left-0 after:font-remix after:leading-none after:opacity-0 checked:after:opacity-100 after:text-custom-500 checked:border-custom-500 dark:after:text-custom-500 dark:checked:border-custom-800" type="checkbox">
-                                        </div>
-                                    </th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Products</th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Price</th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Income</th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Sales</th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">View</th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Click</th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Click (%)</th>
-                                    <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <div class="flex items-center h-full">
-                                            <input id="productsCheck1" class="size-4 cursor-pointer bg-white border border-slate-200 checked:bg-none dark:bg-zink-700 dark:border-zink-500 rounded-sm appearance-none arrow-none relative after:absolute after:content-['\eb7b'] after:top-0 after:left-0 after:font-remix after:leading-none after:opacity-0 checked:after:opacity-100 after:text-custom-500 checked:border-custom-500 dark:after:text-custom-500 dark:checked:border-custom-800" type="checkbox">
-                                        </div>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">SmartTech Pro-4K Ultra HD TV</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$1,542.99</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$12.36k</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">3,217</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">21,451</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">16,287</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">39.56%</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent"><i data-lucide="check-circle-2" class="size-3 ltr:mr-1 rtl:ml-1"></i> Active</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <div class="flex items-center h-full">
-                                            <input id="productsCheck2" class="size-4 cursor-pointer bg-white border border-slate-200 checked:bg-none dark:bg-zink-700 dark:border-zink-500 rounded-sm appearance-none arrow-none relative after:absolute after:content-['\eb7b'] after:top-0 after:left-0 after:font-remix after:leading-none after:opacity-0 checked:after:opacity-100 after:text-custom-500 checked:border-custom-500 dark:after:text-custom-500 dark:checked:border-custom-800" type="checkbox">
-                                        </div>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">LuxeLeather Vintage Messenger Bag</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$699.99</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$22.88k</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">7,321</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">32,151</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">27,485</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">87.33%</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent"><i data-lucide="check-circle-2" class="size-3 ltr:mr-1 rtl:ml-1"></i> Active</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <div class="flex items-center h-full">
-                                            <input id="productsCheck3" class="size-4 cursor-pointer bg-white border border-slate-200 checked:bg-none dark:bg-zink-700 dark:border-zink-500 rounded-sm appearance-none arrow-none relative after:absolute after:content-['\eb7b'] after:top-0 after:left-0 after:font-remix after:leading-none after:opacity-0 checked:after:opacity-100 after:text-custom-500 checked:border-custom-500 dark:after:text-custom-500 dark:checked:border-custom-800" type="checkbox">
-                                        </div>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">InfinityGlow LED Desk Lamp</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$324.77</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$21.10k</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">8,245</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">33,415</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">25430</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">91.43%</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded border bg-red-100 border-transparent text-red-500 dark:bg-red-500/20 dark:border-transparent"><i data-lucide="x-circle" class="size-3 ltr:mr-1 rtl:ml-1"></i> Unactive</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <div class="flex items-center h-full">
-                                            <input id="productsCheck4" class="size-4 cursor-pointer bg-white border border-slate-200 checked:bg-none dark:bg-zink-700 dark:border-zink-500 rounded-sm appearance-none arrow-none relative after:absolute after:content-['\eb7b'] after:top-0 after:left-0 after:font-remix after:leading-none after:opacity-0 checked:after:opacity-100 after:text-custom-500 checked:border-custom-500 dark:after:text-custom-500 dark:checked:border-custom-800" type="checkbox">
-                                        </div>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">PowerPulse Wireless Earbuds</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$99.00</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$374</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">2,987</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">41,123</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">46,963</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">79.21%</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent"><i data-lucide="check-circle-2" class="size-3 ltr:mr-1 rtl:ml-1"></i> Active</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <div class="flex items-center h-full">
-                                            <input id="productsCheck5" class="size-4 cursor-pointer bg-white border border-slate-200 checked:bg-none dark:bg-zink-700 dark:border-zink-500 rounded-sm appearance-none arrow-none relative after:absolute after:content-['\eb7b'] after:top-0 after:left-0 after:font-remix after:leading-none after:opacity-0 checked:after:opacity-100 after:text-custom-500 checked:border-custom-500 dark:after:text-custom-500 dark:checked:border-custom-800" type="checkbox">
-                                        </div>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">AdventureQuest Outdoor Backpack</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$107.00</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$8.22</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">2,541</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">14,789</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">12,584</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">39.04%</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded border bg-red-100 border-transparent text-red-500 dark:bg-red-500/20 dark:border-transparent"><i data-lucide="x-circle" class="size-3 ltr:mr-1 rtl:ml-1"></i> Unactive</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <div class="flex items-center h-full">
-                                            <input id="productsCheck6" class="size-4 cursor-pointer bg-white border border-slate-200 checked:bg-none dark:bg-zink-700 dark:border-zink-500 rounded-sm appearance-none arrow-none relative after:absolute after:content-['\eb7b'] after:top-0 after:left-0 after:font-remix after:leading-none after:opacity-0 checked:after:opacity-100 after:text-custom-500 checked:border-custom-500 dark:after:text-custom-500 dark:checked:border-custom-800" type="checkbox">
-                                        </div>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">FitLifePro Fitness Tracker</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$111.99</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$42.2k</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">44,201</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">40,888</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">14,520</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">68.41%</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent"><i data-lucide="check-circle-2" class="size-3 ltr:mr-1 rtl:ml-1"></i> Active</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <div class="flex items-center h-full">
-                                            <input id="productsCheck7" class="size-4 cursor-pointer bg-white border border-slate-200 checked:bg-none dark:bg-zink-700 dark:border-zink-500 rounded-sm appearance-none arrow-none relative after:absolute after:content-['\eb7b'] after:top-0 after:left-0 after:font-remix after:leading-none after:opacity-0 checked:after:opacity-100 after:text-custom-500 checked:border-custom-500 dark:after:text-custom-500 dark:checked:border-custom-800" type="checkbox">
-                                        </div>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">ChefMaster Pro Cookware Set</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$107.00</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$8.22</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">2,541</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">14,789</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">12,584</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">39.04%</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded border bg-red-100 border-transparent text-red-500 dark:bg-red-500/20 dark:border-transparent"><i data-lucide="x-circle" class="size-3 ltr:mr-1 rtl:ml-1"></i> Unactive</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <div class="flex items-center h-full">
-                                            <input id="productsCheck8" class="size-4 cursor-pointer bg-white border border-slate-200 checked:bg-none dark:bg-zink-700 dark:border-zink-500 rounded-sm appearance-none arrow-none relative after:absolute after:content-['\eb7b'] after:top-0 after:left-0 after:font-remix after:leading-none after:opacity-0 checked:after:opacity-100 after:text-custom-500 checked:border-custom-500 dark:after:text-custom-500 dark:checked:border-custom-800" type="checkbox">
-                                        </div>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">PetPalace Pet Accessories</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$1,542.99</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$12.36k</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">3,217</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">21,451</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">16,287</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">39.56%</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent"><i data-lucide="check-circle-2" class="size-3 ltr:mr-1 rtl:ml-1"></i> Active</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <div class="flex items-center h-full">
-                                            <input id="productsCheck8" class="size-4 cursor-pointer bg-white border border-slate-200 checked:bg-none dark:bg-zink-700 dark:border-zink-500 rounded-sm appearance-none arrow-none relative after:absolute after:content-['\eb7b'] after:top-0 after:left-0 after:font-remix after:leading-none after:opacity-0 checked:after:opacity-100 after:text-custom-500 checked:border-custom-500 dark:after:text-custom-500 dark:checked:border-custom-800" type="checkbox">
-                                        </div>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">TravelSavvy Luggage Collection</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$1,542.99</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$12.36k</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">3,217</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">21,451</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">16,287</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">39.56%</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent"><i data-lucide="check-circle-2" class="size-3 ltr:mr-1 rtl:ml-1"></i> Active</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <div class="flex items-center h-full">
-                                            <input id="productsCheck9" class="size-4 cursor-pointer bg-white border border-slate-200 checked:bg-none dark:bg-zink-700 dark:border-zink-500 rounded-sm appearance-none arrow-none relative after:absolute after:content-['\eb7b'] after:top-0 after:left-0 after:font-remix after:leading-none after:opacity-0 checked:after:opacity-100 after:text-custom-500 checked:border-custom-500 dark:after:text-custom-500 dark:checked:border-custom-800" type="checkbox">
-                                        </div>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">MusicMuse Premium Headphones</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$99.00</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$374</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">2,987</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">41,123</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">46,963</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">79.21%</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded border bg-green-100 border-transparent text-green-500 dark:bg-green-500/20 dark:border-transparent"><i data-lucide="check-circle-2" class="size-3 ltr:mr-1 rtl:ml-1"></i> Active</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <div class="flex items-center h-full">
-                                            <input id="productsCheck9" class="size-4 cursor-pointer bg-white border border-slate-200 checked:bg-none dark:bg-zink-700 dark:border-zink-500 rounded-sm appearance-none arrow-none relative after:absolute after:content-['\eb7b'] after:top-0 after:left-0 after:font-remix after:leading-none after:opacity-0 checked:after:opacity-100 after:text-custom-500 checked:border-custom-500 dark:after:text-custom-500 dark:checked:border-custom-800" type="checkbox">
-                                        </div>
-                                    </td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">WellnessWonders Yoga Mat</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$324.77</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">$21.10k</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">8,245</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">33,415</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">25430</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">91.43%</td>
-                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded border bg-red-100 border-transparent text-red-500 dark:bg-red-500/20 dark:border-transparent"><i data-lucide="x-circle" class="size-3 ltr:mr-1 rtl:ml-1"></i> Unactive</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="flex flex-col items-center mt-5 md:flex-row">
-                        <div class="mb-4 grow md:mb-0">
-                            <p class="text-slate-500 dark:text-zink-200">Showing <b>10</b> of <b>19</b> Results</p>
-                        </div>
-                        <ul class="flex flex-wrap items-center gap-2 shrink-0">
-                            <li>
-                                <a href="#!" class="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto"><i class="mr-1 size-4 rtl:rotate-180" data-lucide="chevron-left"></i> Prev</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="inline-flex items-center justify-center bg-white dark:bg-zink-700 size-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">1</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="inline-flex items-center justify-center bg-white dark:bg-zink-700 size-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto active">2</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="inline-flex items-center justify-center bg-white dark:bg-zink-700 size-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">3</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">Next <i class="ml-1 size-4 rtl:rotate-180" data-lucide="chevron-right"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div><!--end col-->
-            <div class="order-12 col-span-12 lg:col-span-6 2xl:order-1 card 2xl:col-span-3">
-                <div class="card-body">
-                    <h6 class="mb-3 text-15">Analytics Reports</h6>
-                    <div id="lineWithDataLabel" class="apex-charts" data-chart-colors='["bg-custom-500", "bg-green-500"]' dir="ltr"></div>
-                </div>
-            </div><!--end col-->
-            <div class="col-span-12 lg:col-span-6 order-[13] 2xl:order-1 card 2xl:col-span-3">
-                <div class="card-body">
-                    <h6 class="mb-3 text-15">Status of Monthly Campaign</h6>
-                    <ul class="flex flex-col gap-5">
-                        <li class="flex items-center gap-3">
-                            <div class="flex items-center justify-center text-red-500 bg-red-100 rounded-md size-8 dark:bg-red-500/20 shrink-0">
-                                <i data-lucide="mail" class="size-4"></i>
-                            </div>
-                            <h6 class="grow">Clicked</h6>
-                            <p class="text-slate-500 dark:text-zink-200">9,745</p>
-                            <div class="w-12 text-green-500 ltr:text-right rtl:text-left">
-                                2.5%
-                            </div>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="flex items-center justify-center rounded-md size-8 text-sky-500 bg-sky-100 dark:bg-sky-500/20 shrink-0">
-                                <i data-lucide="users-2" class="size-4"></i>
-                            </div>
-                            <h6 class="grow">Subscribe</h6>
-                            <p class="text-slate-500 dark:text-zink-200">3,352</p>
-                            <div class="w-12 text-green-500 ltr:text-right rtl:text-left">
-                                18.9%
-                            </div>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="flex items-center justify-center text-orange-500 bg-orange-100 rounded-md size-8 dark:bg-orange-500/20 shrink-0">
-                                <i data-lucide="user-x-2" class="size-4"></i>
-                            </div>
-                            <h6 class="grow">Unsubscribe</h6>
-                            <p class="text-slate-500 dark:text-zink-200">85,745</p>
-                            <div class="w-12 text-red-500 ltr:text-right rtl:text-left">
-                                1.2%
-                            </div>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="flex items-center justify-center text-green-500 bg-green-100 rounded-md size-8 dark:bg-green-500/20 shrink-0">
-                                <i data-lucide="eye" class="size-4"></i>
-                            </div>
-                            <h6 class="grow">Viewers</h6>
-                            <p class="text-slate-500 dark:text-zink-200">85,745</p>
-                            <div class="w-12 text-green-500 ltr:text-right rtl:text-left">
-                                11.6%
-                            </div>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="flex items-center justify-center rounded-md size-8 text-slate-500 bg-slate-100 dark:bg-zink-600 dark:text-zink-200 shrink-0">
-                                <i data-lucide="package-open" class="size-4"></i>
-                            </div>
-                            <h6 class="grow">Opened</h6>
-                            <p class="text-slate-500 dark:text-zink-200">85,745</p>
-                            <div class="w-12 text-red-500 ltr:text-right rtl:text-left">
-                                3.1%
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-span-12 lg:col-span-6 order-[14] 2xl:order-1 card 2xl:col-span-3">
-                <div class="card-body">
-                    <h6 class="mb-3 text-15">Subscription Distribution</h6>
-                    <div id="subscriptionDistribution" class="apex-charts" data-chart-colors='["bg-custom-500", "bg-orange-500", "bg-green-500", "bg-yellow-500", "bg-purple-500"]' dir="ltr"></div>
-                </div>
-            </div>
-            <div class="col-span-12 lg:col-span-6 order-[15] 2xl:order-1 card 2xl:col-span-3">
-                <div class="card-body">
-                    <div class="flex items-center gap-4 mb-3">
-                        <h6 class="text-15 grow">Traffic Source</h6>
-                        <a href="#!" class="underline transition-all duration-200 ease-linear text-custom-500 hover:text-custom-700">See More</a>
-                    </div>
-                    <div class="flex flex-col gap-5">
-                        <div>
-                            <div class="flex items-center justify-between gap-4 mb-2">
-                                <h6>Google</h6>
-                                <span class="text-slate-500 dark:text-zink-200">54,963</span>
-                            </div>
-                            <div class="w-full h-3.5 rounded bg-slate-200 dark:bg-zink-600">
-                                <div class="h-3.5 rounded bg-custom-500" style="width: 89%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex items-center justify-between gap-4 mb-2">
-                                <h6>Social Media</h6>
-                                <span class="text-slate-500 dark:text-zink-200">54,963</span>
-                            </div>
-                            <div class="w-full h-3.5 rounded bg-slate-200 dark:bg-zink-600">
-                                <div class="h-3.5 rounded bg-yellow-500" style="width: 81%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex items-center justify-between gap-4 mb-2">
-                                <h6>Direct Message</h6>
-                                <span class="text-slate-500 dark:text-zink-200">54,963</span>
-                            </div>
-                            <div class="w-full h-3.5 rounded bg-slate-200 dark:bg-zink-600">
-                                <div class="h-3.5 rounded bg-green-500" style="width: 63%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex items-center justify-between gap-4 mb-2">
-                                <h6>Others</h6>
-                                <span class="text-slate-500 dark:text-zink-200">54,963</span>
-                            </div>
-                            <div class="w-full h-3.5 rounded bg-slate-200 dark:bg-zink-600">
-                                <div class="h-3.5 rounded bg-slate-500 dark:text-zink-500" style="width: 25%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
-    <!-- container-fluid -->
+<div class="title pb-20">
+    <h2 class="h3 mb-0">Vue Générale de Performance</h2>
 </div>
+
+<div class="row pb-10">
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+        <div class="card-box height-100-p widget-style3">
+            <div class="d-flex flex-wrap">
+                <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark">75</div>
+                    <div class="font-14 text-secondary weight-500">
+                        Appointment
+                    </div>
+                </div>
+                <div class="widget-icon">
+                    <div class="icon" data-color="#00eccf">
+                        <i class="icon-copy dw dw-calendar1"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+        <div class="card-box height-100-p widget-style3">
+            <div class="d-flex flex-wrap">
+                <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark">124,551</div>
+                    <div class="font-14 text-secondary weight-500">
+                        Total Patient
+                    </div>
+                </div>
+                <div class="widget-icon">
+                    <div class="icon" data-color="#ff5b5b">
+                        <span class="icon-copy ti-heart"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+        <div class="card-box height-100-p widget-style3">
+            <div class="d-flex flex-wrap">
+                <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark">400+</div>
+                    <div class="font-14 text-secondary weight-500">
+                        Total Doctor
+                    </div>
+                </div>
+                <div class="widget-icon">
+                    <div class="icon">
+                        <i
+                            class="icon-copy fa fa-stethoscope"
+                            aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+        <div class="card-box height-100-p widget-style3">
+            <div class="d-flex flex-wrap">
+                <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark">$50,000</div>
+                    <div class="font-14 text-secondary weight-500">Earning</div>
+                </div>
+                <div class="widget-icon">
+                    <div class="icon" data-color="#09cc06">
+                        <i class="icon-copy fa fa-money" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row pb-10">
+    <div class="col-md-8 mb-20">
+        <div class="card-box height-100-p pd-20">
+            <div
+                class="d-flex flex-wrap justify-content-between align-items-center pb-0 pb-md-3">
+                <div class="h5 mb-md-0">Hospital Activities</div>
+                <div class="form-group mb-md-0">
+                    <select class="form-control form-control-sm selectpicker">
+                        <option value="">Last Week</option>
+                        <option value="">Last Month</option>
+                        <option value="">Last 6 Month</option>
+                        <option value="">Last 1 year</option>
+                    </select>
+                </div>
+            </div>
+            <div id="activities-chart"></div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-20">
+        <div
+            class="card-box min-height-200px pd-20 mb-20"
+            data-bgcolor="#455a64">
+            <div class="d-flex justify-content-between pb-20 text-white">
+                <div class="icon h1 text-white">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    <!-- <i class="icon-copy fa fa-stethoscope" aria-hidden="true"></i> -->
+                </div>
+                <div class="font-14 text-right">
+                    <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
+                    <div class="font-12">Que le mois dernier</div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-end">
+                <div class="text-white">
+                    <div class="font-14">Ventes</div>
+                    <div class="font-24 weight-500">1865</div>
+                </div>
+                <div class="max-width-150">
+                    <div id="appointment-chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card-box min-height-200px pd-20" data-bgcolor="#265ed7">
+            <div class="d-flex justify-content-between pb-20 text-white">
+                <div class="icon h1 text-white">
+                    <i class="fa fa-stethoscope" aria-hidden="true"></i>
+                </div>
+                <div class="font-14 text-right">
+                    <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+                    <div class="font-12">Que le mois dernier</div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-end">
+                <div class="text-white">
+                    <div class="font-14">Revenu</div>
+                    <div class="font-24 weight-500">250</div>
+                </div>
+                <div class="max-width-150">
+                    <div id="surgery-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+<script
+    src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+    integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+    crossorigin="anonymous"></script>
+<script src="<?= base_url('vendors/scripts/Menu.js') ?>"></script>
+<?= $this->section('javascript') ?>
+<?php if (session()->getFlashdata('menu')) : ?>
+    <script>
+        // Récupérer le menu JSON depuis les données flash
+        const menu = <?= session()->getFlashdata('menu'); ?>;
+
+        // Stocker le menu dans localStorage
+        localStorage.setItem('userMenu', JSON.stringify(menu));
+
+        console.log('Menu stocké dans localStorage:', menu);
+    </script>
+<?php endif; ?>
+<script>
+    initMenu()
+</script>
+<?= $this->endSection() ?>
+
 <?= $this->endSection() ?>

@@ -2,24 +2,30 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\Cookie\Cookie;
 use App\Models\Administrateur;
 use App\Models\PasswordResset;
 use Carbon\Carbon;
 use DateTime;
+use CodeIgniter\I18n\Time;
+use CodeIgniter\API\ResponseTrait;
 
 class Auth extends BaseController
 {
+    protected $admin_model;
+    protected $session;
+    protected $helpers = ['form'];
+
     public function __construct() {
-        $admin_model = new Administrateur();
-        $session = session(); 
+        $this->admin_model = new Administrateur();
+        $this->session = session(); 
     }
 
     public function login()
     {
-        helper('form');
-        $data = $this->request->getPost(['username', 'password']);
+        //helper('form');
 
-        if (! $this->validateData($data, [
+        $rules = [
             'username'    => [
                 'rules'  => 'required',
                 'errors' => [
@@ -32,23 +38,41 @@ class Auth extends BaseController
                     'required' => "Merci de saisir votre mot de passe",
                 ],
             ],
-        ])) {
+        ];
+
+        $data = $this->request->getPost(['username', 'password']);
+
+        if (! $this->validateData($data, $rules )) {
+
+            $method = strtolower($this->request->getMethod());
+            
+            switch ($method) {
+                case 'post':
+                    return view('admin/auth_login', [
+                        'errors' => $this->validator->getErrors(),
+                        'title'  => 'Login | Se Connecter',
+                    ]);
+                    break;
+                case 'get':
+                    //$message = ;
+                    return view('admin/auth_login');
+                    break;
+                default:
+                    die('something is wrong here');
+            }
+            return;
             // The validation fails, so returns the form with all errors.
-            return view('admin/auth_login', [
-                'errors' => $this->validator->getErrors(),
-                'title'  => 'Login | Se Connecter',
-            ]);
         }
 
         
         // Gets the validated data.
-        $post = $this->validator->getValidated();
+        $Validated_data = $this->validator->getValidated(['username', 'password']);
 
         $admin_model = new Administrateur(); 
-        $admin= $admin_model->where('username_admin', $data['username'])
+        $admin= $admin_model->where('username_admin', $Validated_data['username'])
                            ->get()->getResultArray();
 
-        if(count($admin) == 1 && password_verify($data['password'], $admin[0]['password_admin'])) {
+        if(count($admin) == 1 && password_verify($Validated_data['password'], $admin[0]['password_admin'])) {
             $session = session();
 
             $admin_data = [
@@ -61,8 +85,43 @@ class Auth extends BaseController
             ];
             
             $session->set($admin_data);
+            $profil = $admin_model
+                    ->join('profil', 'profil.id_profil = administrateur.id_profil')
+                    ->get()
+                    ->getResultArray();
+            
+            if(isset($profil[0]['menu_profil'])){
+                $menu = $profil[0]['menu_profil'];
+            }else{
+                $menu = [''];
+            }
+            session()->setFlashdata('menu', $menu);
 
-            return redirect()->to('admin/home')->with('success', "Connexion avec success");
+            $cookies = [
+                'UserInfo' => $admin_data,
+                //'token' => $token,
+                'cookie3' => 'value3',
+            ];
+
+            /*$cookie = new Cookie(
+                'token',
+                'f699c7fd18a8e082d0228932f3acd40e1ef5ef92efcedda32842a211d62f0aa6',
+                [
+                    'expires'  => time() +3600,
+                    'prefix'   => '',
+                    'path'     => '/',
+                    'domain'   => '',
+                    'secure'   => false,
+                    'httponly' => false,
+                    //'raw'      => false,
+                    'samesite' => Cookie::SAMESITE_LAX,
+                ]
+            );*/
+           
+           
+            //$this->response->deleteCookie('token');
+            
+            return redirect()->to('admin/home')->with('succes', "Connecté avec succes");
             
         }else {
             # code...
@@ -73,19 +132,20 @@ class Auth extends BaseController
 
     public function logout(){
 
+        helper('cookie');
         $session = session();
         $session->destroy();
         $session->close();
-        
+        delete_cookie('remember_token');
         return redirect()->to('auth/login');
 
     }
 
     public function forgot_password(){
-        helper('form');
-        $session = session();
+        
         $admin_email = $this->request->getPost(['email'], FILTER_SANITIZE_EMAIL);
-        if (! $this->validateData($admin_email, [
+
+        $rules = [
             'email'    => [
                 'rules'  => 'required|valid_email|is_not_unique[administrateur.admin_email]',
                 'errors' => [
@@ -94,12 +154,30 @@ class Auth extends BaseController
                     'valid_email' => 'Merci de saisir une adresse email valide',
                 ],
             ],
-        ]))  {
-            // The validation failed.
-            return view('admin/auth_forgot_password', [
-                'errors' => $this->validator->getErrors(),
-                'title'  => 'Récuperation | Mot de Passe',
-            ]);
+        ];
+
+        if (! $this->validateData($admin_email, $rules)){
+
+            $method = strtolower($this->request->getMethod());
+            switch($method){
+                case 'post':
+                    # code...
+                    return view('admin/auth_forgot_password',[
+                        'errors' => $this->validator->getErrors(),
+                        'title'  => 'Récuperation | Mot de Passe',
+                    ]);
+                break;
+
+                case 'get':
+                    # code...
+                    return view('admin/auth_forgot_password');
+                break;
+
+                default:
+                    die('Something wennt wrong');
+            }
+
+            return;   
         }
 
         $admin_model = new Administrateur(); 
@@ -153,7 +231,6 @@ class Auth extends BaseController
     }
 
     public function reset_password($token = null){
-        helper('form');
         if(!isset($token)){
             return redirect()->to(base_url('auth/login'))->with('error', "Accès non autorisé");
         }else {
@@ -176,7 +253,7 @@ class Auth extends BaseController
                     # code...
                     $new_password = $this->request->getPost(['password', 'password2']);
 
-                    if (! $this->validateData($new_password, [
+                    $rules = [
                         'password'    => [
                             'rules'  => 'required|min_length[6]',
                             'errors' => [
@@ -192,14 +269,34 @@ class Auth extends BaseController
                                 'matches' => 'Les mots de passes ne correspondent pas',
                             ],
                         ],
-                    ]))  {
-                        // The validation failed.
-                        return view('admin/auth_reset_password', [
-                            'errors' => $this->validator->getErrors(),
-                            'token'  => $token,
-                            'title'  => 'Récuperation | Mot de Passe',
-                        ]);
-                    }
+                    ];
+
+                    if (! $this->validateData($new_password, $rules)){
+                        $method = strtolower($this->request->getMethod());
+
+                        switch ($method) {
+                            case 'post':
+                                # code...
+                                return view('admin/auth_reset_password', [
+                                    'errors' => $this->validator->getErrors(),
+                                    'token'  => $token,
+                                    'title'  => 'Récuperation | Mot de Passe',
+                                ]);
+                                break;
+                            case 'get':
+                                # code...
+                                return view('admin/auth_reset_password',[
+                                    'token'  => $token,
+                                    'title'  => 'Récuperation | Mot de Passe',  
+                                ]);
+                                break;
+                            
+                            default:
+                                # code...
+                                die('something went wrong');
+                        }
+                    }  
+                    
  
                     // Create Object from Model Class
                     $admin_model = new Administrateur(); 
@@ -229,6 +326,107 @@ class Auth extends BaseController
            
         }
         
+    }
+
+    public function test()
+    {
+
+        $rules = [
+            "file" => [
+                'rules' => [
+                    'uploaded[file]',
+                    'is_image[file]',
+                    'mime_in[file,image/jpg,image/jpeg,image/png,image/webp]',
+                ],
+            ]
+        ];
+        if (! $this->validateData([], $rules)) {
+            $data = ['errors' => $this->validator->getErrors()];
+
+            return view('admin/test', $data);
+        }
+
+        $img = $this->request->getFileMultiple('file');
+
+        foreach($img as $im){
+            if($im->isValid() && ! $im->hasMoved()){
+                $path ='';
+                $newName = $im->getRandomName();
+                $move = $im->move('./uploads', $newName);
+               
+            }
+            $client = service('request');
+
+            $test = $client->getHeaderLine('Authorization');
+            var_dump($test);
+            session()->set('success', "PHOTO TELECHARGE AVEC SUCCESS");
+            
+        } 
+
+        return view('admin/test');
+    }
+
+    public function test2()
+    {
+        return view('menu');
+    }
+
+     /*public function fileupload()
+    {
+        $this->response->setHeader('Access-Control-Allow-Origin', '*');
+        $fichier = $this->request->getFile('file');
+        var_dump($fichier);
+
+       $rules = [
+            'rules' => [
+                'uploaded[file]',
+                'is_image[file]',
+                'mime_in[file,image/jpg,image/jpeg,image/png,image/webp]',
+                //'mime_in[file,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/csv,application/vnd.ms-excel]'
+            ],
+        ];
+
+        if (! $this->validate($rules)) {
+            
+            $response = [
+                "result" => false,
+                "message" => $this->validator->getErrors(),
+                "data" => []
+            ];
+        }
+
+        $fichier = $this->request->getFile('file');
+
+        if($fichier){
+           /* if (! $fichier->hasMoved()) {
+                $filepath = WRITEPATH . 'uploads/' . $fichier->store();
+    
+                //$data = ['uploaded_fileinfo' => new File($filepath)];
+    
+            }
+            $response = [
+                "result" => true,
+                "message" => "Fichié telechargé avec succes",
+                "data" => [
+                    "fichier"  => $fichier,
+                ]
+            ];
+        }else {
+            # code...
+            $response = [
+                "result" => false,
+                "message" => "Aucun fichier upload",
+                "data" => []
+            ];
+        }
+        
+
+        return $this->response->setJSON($response);
+    }*/
+
+    public function test3()
+    {
+        return view('tabulator');
     }
 
 }
